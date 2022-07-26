@@ -7,9 +7,13 @@ const headLineStyle = TextStyle(
   color: backgroundColor,
   fontWeight: FontWeight.bold,
 );
+const questionStyle = TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.w500,
+);
 const pageDescription = TextStyle(
   color: baseColor4,
-  fontSize: 18,
+  fontSize: 16,
 );
 
 // emblem, capacity
@@ -18,9 +22,10 @@ const emblemFont = TextStyle(
   fontSize: 12,
 );
 const capacityFont = TextStyle(
-  color: backgroundColor,
-  fontSize: 18,
-);
+    color: backgroundColor,
+    fontSize: 22,
+    fontFamily: 'Cormorant_SC',
+    fontWeight: FontWeight.w700);
 
 // location
 const districtFont = TextStyle(
