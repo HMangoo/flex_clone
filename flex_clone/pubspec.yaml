@@ -37,6 +37,7 @@ dependencies:
   get:
   gap:
   permission_handler: ^10.0.0
+  image_picker:
 
 dev_dependencies:
   flutter_test:

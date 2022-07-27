@@ -7,7 +7,7 @@ import '../page/chat/questions.dart';
 class SignupController {
   RxList<Widget> bubbles = <Widget>[].obs;
 
-  List sendMessage = [1, 3, 5, 7, 9, 11, 14];
+  List sendMessage = [1, 3, 5, 7, 9, 11, 14, 19];
 
   List wantAnswerNum = [13, 16, 18];
 
@@ -33,7 +33,10 @@ class SignupController {
         curve: Curves.fastOutSlowIn);
   }
 
+  RxString answerStorage = ''.obs;
+
   void answer(answer) {
+    answerStorage.value = answer;
     Message message = Message(text: answer, isSender: true);
     bubbles.add(TextMessage(message: message));
     nextQuestion();
@@ -60,4 +63,17 @@ class SignupController {
     questionIndex.value = questionIndex.value - 1;
     scrollDown();
   }
+
+  void rejectName() {
+    Message message = Message(
+      text: '다른 멤버가 사용 중인 닉네임이에요. 다른 닉네임을 입력해주세요',
+      isSender: false,
+      lastQuestion: true,
+    );
+    bubbles.add(TextMessage(message: message));
+    scrollDown();
+  }
+
+  RxInt singleEmblemClickCount = 0.obs;
+  RxInt duplicatedEmblemClickCount = 0.obs;
 }

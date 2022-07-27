@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:permission_and_image_load/page/chat/emblem/emblem_select_page.dart';
 import 'package:permission_and_image_load/page/chat/permission/permission_page.dart';
+import 'package:permission_and_image_load/page/chat/visual/visual_page.dart';
 import 'package:permission_and_image_load/page/chat/widget/button_message.dart';
 import 'package:permission_and_image_load/page/chat/widget/text_message.dart';
 import 'package:permission_and_image_load/page/chat/widget/two_button_message.dart';
@@ -25,23 +27,24 @@ class Message {
   bool isMinorColor;
 
   int numConsentButton;
+  bool isUseAnswer;
 
   var consentText;
 
-  Message({
-    required this.text,
-    required this.isSender,
-    this.buttonMessage = "",
-    this.buttonMessage2 = "",
-    this.lastQuestion = false,
-    this.isClickFunc = false,
-    this.firstButtonClickFunc = nullFunc,
-    this.secondButtonClickFunc = nullFunc,
-    this.numConsentButton = 0,
-    this.consentText = "",
-    this.yesOrNoButton = false,
-    this.isMinorColor = false,
-  });
+  Message(
+      {required this.text,
+      required this.isSender,
+      this.buttonMessage = "",
+      this.buttonMessage2 = "",
+      this.lastQuestion = false,
+      this.isClickFunc = false,
+      this.firstButtonClickFunc = nullFunc,
+      this.secondButtonClickFunc = nullFunc,
+      this.numConsentButton = 0,
+      this.consentText = "",
+      this.yesOrNoButton = false,
+      this.isMinorColor = false,
+      this.isUseAnswer = false});
 }
 
 List demeChatMessages = [
@@ -87,7 +90,7 @@ List demeChatMessages = [
     buttonMessage: '자격 확인하기',
     isSender: false,
     lastQuestion: true,
-    firstButtonClickFunc: () => Get.to(() => CapacityPage()),
+    firstButtonClickFunc: () => Get.to(() => const CapacityPage()),
   ),
   Message(text: '확인했어요! 충분히 가능할 것 같아요', isSender: true),
   Message(text: '역시 멋지세요!', isSender: false),
@@ -97,7 +100,7 @@ List demeChatMessages = [
     buttonMessage: '권한 확인하기',
     isSender: false,
     lastQuestion: true,
-    firstButtonClickFunc: () => Get.to(() => PermissionPage()),
+    firstButtonClickFunc: () => Get.to(() => const PermissionPage()),
   ),
   Message(text: '권한 허용 완료!', isSender: true), // 여기까지 list에 들어있음, 권한 페이지 만들어야함
   Message(text: '이제 마지막으로 이용약관만 확인하면 확인절차는 끝이에요', isSender: false),
@@ -132,7 +135,7 @@ List demeChatMessages = [
     buttonMessage: '엠블럼 다시보기',
     isSender: false,
     isMinorColor: true,
-    firstButtonClickFunc: () => Get.to(() => CapacityPage()),
+    firstButtonClickFunc: () => Get.to(() => const CapacityPage()),
   ),
   Message(
     text: '외모에 자신 있다면 비주얼 심사를, 능력에 자신 있다면 서류 심사를 선택해주세요!',
@@ -140,11 +143,31 @@ List demeChatMessages = [
     buttonMessage2: '서류 심사',
     yesOrNoButton: false,
     isSender: false,
-    firstButtonClickFunc: () => Get.to(() => PermissionPage()),
-    secondButtonClickFunc: () => Get.to(() => CapacityPage()),
+    firstButtonClickFunc: () => Get.to(() => const VisualPage()),
+    isClickFunc: true,
     lastQuestion: true,
   ),
-  Message(text: '능력에 자신 있어요!', isSender: true),
+  Message(text: '멋진 능력을 가지고 계시나봐요! 플렉서들에게 인기가 아주 많을 것 같아요:)', isSender: false),
+  Message(text: '플렉스 팀의 서류 검증 시스템으로 당신의 능력에 신뢰와 진정성을 더해드릴게요!', isSender: false),
+  Message(
+    text: '안내에 따라 당신의 능력을 자랑할 수 있는 엠블럼을 신청해주세요',
+    isSender: false,
+    lastQuestion: true,
+    buttonMessage: '엠블럼 신청하기',
+    firstButtonClickFunc: () => Get.to(() => const EmblemSelectPage()),
+  ),
+  Message(text: '엠블럼 신청 완료!', isSender: true), // 20 - 34
+  Message(
+      text: '잘 따라와 주셔서 너무 기뻐요 :) 이제 멋진 프로필만 만들면 끝이니까 조금만 더 힘내요!',
+      isSender: false),
+  Message(text: '당신을 뭐라고 불러드릴까요?', isSender: false, lastQuestion: true),
+  Message(text: '정말 멋진 닉네임이에요!', isSender: false, isUseAnswer: true),
+  Message(
+    text: '지금 사는 곳은 어디신가요?',
+    buttonMessage: '거주지 선택하기',
+    isSender: false,
+    lastQuestion: true,
+  ),
 ];
 
 List<List<Widget>> question = [
@@ -152,47 +175,62 @@ List<List<Widget>> question = [
     TextMessage(message: demeChatMessages[0]),
     TextMessage(message: demeChatMessages[1]),
     ButtonMessage(message: demeChatMessages[2]),
-  ],
-  [TextMessage(message: demeChatMessages[3])],
+  ], // 1
+  [TextMessage(message: demeChatMessages[3])], //2
   [
     TextMessage(message: demeChatMessages[4]),
     TextMessage(message: demeChatMessages[5]),
     ButtonMessage(message: demeChatMessages[6]),
-  ],
-  [TextMessage(message: demeChatMessages[7])],
+  ], // 3
+  [TextMessage(message: demeChatMessages[7])], // 4
   [
     TextMessage(message: demeChatMessages[8]),
     TextMessage(message: demeChatMessages[9]),
     ButtonMessage(message: demeChatMessages[10]),
-  ],
-  [TextMessage(message: demeChatMessages[11])],
+  ], // 5
+  [TextMessage(message: demeChatMessages[11])], // 6
   [
     TextMessage(message: demeChatMessages[12]),
     ButtonMessage(message: demeChatMessages[13]),
-  ],
-  [TextMessage(message: demeChatMessages[14])],
+  ], // 7
+  [TextMessage(message: demeChatMessages[14])], // 8
   [
     TextMessage(message: demeChatMessages[15]),
     TextMessage(message: demeChatMessages[16]),
     ButtonMessage(message: demeChatMessages[17]),
-  ],
-  [TextMessage(message: demeChatMessages[18])],
+  ], // 9
+  [TextMessage(message: demeChatMessages[18])], // 10
   [
     TextMessage(message: demeChatMessages[19]),
     ButtonMessage(message: demeChatMessages[20]),
-  ],
-  [TextMessage(message: demeChatMessages[21])],
+  ], // 11
+  [TextMessage(message: demeChatMessages[21])], // 12
   [
     TextMessage(message: demeChatMessages[22]),
     TextMessage(message: demeChatMessages[23]),
-  ],
-  [YesOrNoMessage(message: demeChatMessages[24])],
-  [TextMessage(message: demeChatMessages[25])],
-  [TextMessage(message: demeChatMessages[26])],
-  [TextMessage(message: demeChatMessages[27])],
+  ], // 13
+  // -> 이메일 입력
+  [YesOrNoMessage(message: demeChatMessages[24])], // 14 이메일 확인
+  [TextMessage(message: demeChatMessages[25])], // 15 정확해요! (user)
+  [TextMessage(message: demeChatMessages[26])], // 16 비밀번호?
+  [TextMessage(message: demeChatMessages[27])], // 17 비밀번호 맞나?
   [
     TextMessage(message: demeChatMessages[28]),
     ButtonMessage(message: demeChatMessages[29]),
     YesOrNoMessage(message: demeChatMessages[30])
-  ],
+  ], //18
+  [
+    TextMessage(message: demeChatMessages[31]),
+    TextMessage(message: demeChatMessages[32]),
+    ButtonMessage(message: demeChatMessages[33]),
+  ], // 19
+  [TextMessage(message: demeChatMessages[34])], // 20
+  [
+    TextMessage(message: demeChatMessages[35]),
+    TextMessage(message: demeChatMessages[36])
+  ], // 21
+  [
+    TextMessage(message: demeChatMessages[37]),
+    ButtonMessage(message: demeChatMessages[38]),
+  ], // 22
 ];

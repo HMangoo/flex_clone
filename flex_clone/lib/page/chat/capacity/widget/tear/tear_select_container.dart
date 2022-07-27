@@ -25,7 +25,6 @@ class CapacitySelectContainer extends StatelessWidget {
       () => InkWell(
         onTap: () {
           controller.selectdTear.value = tear['id_num'];
-          controller.tearSelection(tear['id_num']);
         },
         child: Container(
           margin: EdgeInsets.only(left: AppLayout.getWidth(5)),

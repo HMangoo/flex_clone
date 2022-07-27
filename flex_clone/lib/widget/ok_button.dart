@@ -17,8 +17,9 @@ class OkButton extends GetView<SignupController> {
     return Container(
         height: AppLayout.getHeight(80),
         width: AppLayout.getSize(context).width,
+        color: Colors.white,
         padding: EdgeInsets.symmetric(
-            vertical: vDefaultPadding, horizontal: hDefaultPadding * 0.5),
+            vertical: vDefaultPadding, horizontal: hDefaultPadding),
         child: InkWell(
           onTap: () {
             Get.back();

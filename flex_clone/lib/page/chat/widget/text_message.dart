@@ -38,7 +38,9 @@ class TextMessage extends GetView<SignupController> {
                   color: message.isSender ? answerColor : baseColor1,
                   borderRadius: BorderRadius.circular(AppLayout.getHeight(10))),
               child: Text(
-                message.text,
+                (!message.isUseAnswer)
+                    ? message.text
+                    : '${message.text} ${controller.answerStorage.value}',
                 style: questionStyle,
               )),
         ],

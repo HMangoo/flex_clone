@@ -6,6 +6,7 @@ class TextFormController {
   final textEditingController = TextEditingController();
 
   RxString tempPW = ''.obs;
+  RxString duplicatedName = 'du'.obs;
 
   void sendMessage(context) {
     FocusScope.of(context).unfocus();

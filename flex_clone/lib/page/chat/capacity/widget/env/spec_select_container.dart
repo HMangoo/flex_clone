@@ -24,7 +24,6 @@ class SpecSelectContainer extends StatelessWidget {
       () => InkWell(
         onTap: () {
           controller.selectdSpec.value = spec['id_num'];
-          controller.specSelection(spec['id_num']);
         },
         child: Container(
           margin: EdgeInsets.only(left: AppLayout.getWidth(5)),

@@ -20,8 +20,7 @@ class CapacityPage extends StatelessWidget {
       body: Stack(
         children: [
           ListView(
-            padding: EdgeInsets.symmetric(
-                vertical: vDefaultPadding, horizontal: hDefaultPadding),
+            padding: EdgeInsets.symmetric(horizontal: hDefaultPadding),
             children: [
               const Text(
                 '가입자격을 확인해주세요',

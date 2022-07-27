@@ -51,6 +51,8 @@ class YesOrNoMessage extends GetView<SignupController> {
                       onTap: () {
                         if (message.yesOrNoButton) {
                           controller.nextQuestion();
+                        } else {
+                          message.firstButtonClickFunc();
                         }
                       },
                       child: Container(
@@ -61,7 +63,8 @@ class YesOrNoMessage extends GetView<SignupController> {
                         decoration: BoxDecoration(
                           borderRadius:
                               BorderRadius.circular(AppLayout.getHeight(12)),
-                          color: baseColor4,
+                          color:
+                              message.yesOrNoButton ? baseColor4 : baseColor3,
                         ),
                         child: Center(
                             child: Text(
@@ -78,6 +81,10 @@ class YesOrNoMessage extends GetView<SignupController> {
                         if (message.yesOrNoButton) {
                           controller.no();
                         }
+                        if (message.isClickFunc &&
+                            controller.questionIndex.value == 18) {
+                          controller.answer('능력에 자신 있어요!');
+                        }
                       },
                       child: Container(
                         width: AppLayout.getWidth(230),
@@ -87,7 +94,8 @@ class YesOrNoMessage extends GetView<SignupController> {
                         decoration: BoxDecoration(
                           borderRadius:
                               BorderRadius.circular(AppLayout.getHeight(12)),
-                          color: baseColor2,
+                          color:
+                              message.yesOrNoButton ? baseColor2 : baseColor3,
                         ),
                         child: Center(
                             child: Text(

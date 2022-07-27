@@ -64,6 +64,9 @@ class AnswerField extends GetView<SignupController> {
                 textFormController.itIsPassword();
                 controller.answer(textFormController.userEnterMessage.value);
               }
+              // 18(비밀먼호 확인차례) 입력한것과 임시저장한 비밀번호가 일치하지 않는다면
+              // 비밀번호가 맞지 않는다, 다시입력해달라는 채팅을 띄워주고 입력을 기다린다.
+              // 비밀번호가 맞는다면 저장된 다음 메세지를 띄운다.
               if (controller.questionIndex.value == 17) {
                 if (textFormController.userEnterMessage.value !=
                     textFormController.tempPW.value) {
@@ -76,11 +79,17 @@ class AnswerField extends GetView<SignupController> {
                   textFormController.itIsPassword();
                   controller.answer(textFormController.userEnterMessage.value);
                 }
-                // controller.answer(textFormController.userEnterMessage.value);
               }
-              // 18(비밀먼호 확인차례) 입력한것과 임시저장한 비밀번호가 일치하지 않는다면
-              // 비밀번호가 맞지 않는다, 다시입력해달라는 채팅을 띄워주고 입력을 기다린다.
-              // 비밀번호가 맞는다면 저장된 다음 메세지를 띄운다.
+              if (controller.questionIndex.value == 21) {
+                if (textFormController.duplicatedName.value ==
+                    textFormController.userEnterMessage.value) {
+                  controller
+                      .repeatPW(textFormController.userEnterMessage.value);
+                  controller.rejectName();
+                } else {
+                  controller.answer(textFormController.userEnterMessage.value);
+                }
+              }
             },
             icon: Obx(
               () => Icon(
