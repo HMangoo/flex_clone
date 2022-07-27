@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         Get.put(SignupController());
       }),
       debugShowCheckedModeBanner: false,
-      home: PermissionPage(),
+      home: LoadingPage(),
     );
   }
 }

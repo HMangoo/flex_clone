@@ -22,7 +22,9 @@ class OkButton extends GetView<SignupController> {
         child: InkWell(
           onTap: () {
             Get.back();
-            controller.nextQuestion();
+            if (controller.questionIndex.value != 18) {
+              controller.nextQuestion();
+            }
           },
           child: Container(
             width: double.maxFinite,

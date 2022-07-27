@@ -77,11 +77,11 @@
     <!-- Permissions options for the `access notification policy` group -->
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
 
-   <application
+    <application
         android:label="flex_clone"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <activityzz
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"

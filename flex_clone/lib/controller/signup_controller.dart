@@ -7,7 +7,9 @@ import '../page/chat/questions.dart';
 class SignupController {
   RxList<Widget> bubbles = <Widget>[].obs;
 
-  List sendMessage = [1, 3, 5, 7, 9, 11];
+  List sendMessage = [1, 3, 5, 7, 9, 11, 14];
+
+  List wantAnswerNum = [13, 16, 18];
 
   RxInt questionIndex = 0.obs;
   void nextQuestion() async {
@@ -37,8 +39,25 @@ class SignupController {
     nextQuestion();
   }
 
+  void repeatPW(answer) {
+    Message message = Message(text: answer, isSender: true);
+    bubbles.add(TextMessage(message: message));
+    scrollDown();
+  }
+
   void no() {
     questionIndex.value = questionIndex.value - 2;
     nextQuestion();
+  }
+
+  void incorrectPW() {
+    Message message = Message(
+      text: '비밀번호가 일치하지 않아요. 처음부터 다시 입력해주세요',
+      isSender: false,
+      lastQuestion: true,
+    );
+    bubbles.add(TextMessage(message: message));
+    questionIndex.value = questionIndex.value - 1;
+    scrollDown();
   }
 }

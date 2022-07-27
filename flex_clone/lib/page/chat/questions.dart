@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:permission_and_image_load/page/chat/permission/permission_page.dart';
 import 'package:permission_and_image_load/page/chat/widget/button_message.dart';
 import 'package:permission_and_image_load/page/chat/widget/text_message.dart';
 import 'package:permission_and_image_load/page/chat/widget/two_button_message.dart';
@@ -21,6 +22,7 @@ class Message {
   VoidCallback secondButtonClickFunc;
 
   bool yesOrNoButton;
+  bool isMinorColor;
 
   int numConsentButton;
 
@@ -38,6 +40,7 @@ class Message {
     this.numConsentButton = 0,
     this.consentText = "",
     this.yesOrNoButton = false,
+    this.isMinorColor = false,
   });
 }
 
@@ -94,6 +97,7 @@ List demeChatMessages = [
     buttonMessage: '권한 확인하기',
     isSender: false,
     lastQuestion: true,
+    firstButtonClickFunc: () => Get.to(() => PermissionPage()),
   ),
   Message(text: '권한 허용 완료!', isSender: true), // 여기까지 list에 들어있음, 권한 페이지 만들어야함
   Message(text: '이제 마지막으로 이용약관만 확인하면 확인절차는 끝이에요', isSender: false),
@@ -104,6 +108,7 @@ List demeChatMessages = [
     lastQuestion: true,
     numConsentButton: 2,
     consentText: ['서비스 이용약관 동의', '개인정보 보호정책 동의'],
+    isClickFunc: true,
   ),
   Message(text: '약관 동의 완료!', isSender: true),
   Message(text: '좋아요! 이제 당신만 접속할 수 있는 계정을 만들거에요', isSender: false),
@@ -114,8 +119,32 @@ List demeChatMessages = [
     buttonMessage2: '다시 입력할래요',
     yesOrNoButton: true,
     isSender: false,
+    lastQuestion: true,
   ),
   Message(text: '정확해요!', isSender: true),
+  Message(text: '이번엔 비밀번호를 몰래 입력해주세요', isSender: false, lastQuestion: true),
+  Message(text: '제대로 입력했는지 확인해볼까요?', isSender: false, lastQuestion: true),
+  Message(
+      text: '정확해요! 이제 자신 있는 매력을 인증해야 해요. 신뢰할 수 있는 만남을 위해서는 필수에요',
+      isSender: false),
+  Message(
+    text: '블라인드표시가 된 엠블럼을 신청할 경우, 프로필 사진 없이 가입이 가능하다는 것도 잊지 마세요',
+    buttonMessage: '엠블럼 다시보기',
+    isSender: false,
+    isMinorColor: true,
+    firstButtonClickFunc: () => Get.to(() => CapacityPage()),
+  ),
+  Message(
+    text: '외모에 자신 있다면 비주얼 심사를, 능력에 자신 있다면 서류 심사를 선택해주세요!',
+    buttonMessage: '비주얼 심사',
+    buttonMessage2: '서류 심사',
+    yesOrNoButton: false,
+    isSender: false,
+    firstButtonClickFunc: () => Get.to(() => PermissionPage()),
+    secondButtonClickFunc: () => Get.to(() => CapacityPage()),
+    lastQuestion: true,
+  ),
+  Message(text: '능력에 자신 있어요!', isSender: true),
 ];
 
 List<List<Widget>> question = [
@@ -159,4 +188,11 @@ List<List<Widget>> question = [
   ],
   [YesOrNoMessage(message: demeChatMessages[24])],
   [TextMessage(message: demeChatMessages[25])],
+  [TextMessage(message: demeChatMessages[26])],
+  [TextMessage(message: demeChatMessages[27])],
+  [
+    TextMessage(message: demeChatMessages[28]),
+    ButtonMessage(message: demeChatMessages[29]),
+    YesOrNoMessage(message: demeChatMessages[30])
+  ],
 ];

@@ -63,7 +63,7 @@ class ButtonMessage extends GetView<SignupController> {
                         decoration: BoxDecoration(
                           borderRadius:
                               BorderRadius.circular(AppLayout.getHeight(12)),
-                          color: baseColor3,
+                          color: message.isMinorColor ? baseColor2 : baseColor3,
                         ),
                         child: Center(
                             child: Text(

@@ -5,11 +5,12 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:permission_and_image_load/page/chat/permission/permission_description.dart';
 
+import '../../../controller/signup_controller.dart';
 import '../../../utils/app_layout.dart';
 import '../../../utils/font_style.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class PermissionPage extends StatelessWidget {
+class PermissionPage extends GetView<SignupController> {
   const PermissionPage({Key? key}) : super(key: key);
 
   @override
@@ -58,7 +59,7 @@ class PermissionPage extends StatelessWidget {
                 padding:
                     EdgeInsets.symmetric(horizontal: AppLayout.getWidth(12.0)),
                 child: InkWell(
-                  onTap: requestCameraPermission,
+                  onTap: requestPermission,
                   child: Container(
                     width: double.maxFinite,
                     height: double.maxFinite,
@@ -85,17 +86,24 @@ class PermissionPage extends StatelessWidget {
     );
   }
 
-  void requestCameraPermission() async {
-    var status = await Permission.camera.status;
-    if (status.isGranted) {
-      print('Permission is granted');
-      Get.back();
-    } else if (status.isDenied) {
-      openAppSettings();
-      if (await Permission.camera.request().isGranted) {
-        print('Permission was granted');
-        Get.back();
+  void requestPermission() async {
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.notification,
+      Permission.storage,
+      Permission.camera
+    ].request();
+
+    statuses.forEach((permission, permissionStatus) async {
+      if (!permissionStatus.isGranted) {
+        openAppSettings();
+        if (await permission.request().isGranted) {
+          print('Permission was granted');
+        }
       }
+    });
+    Get.back();
+    if (controller.questionIndex.value != 18) {
+      controller.nextQuestion();
     }
   }
 }
