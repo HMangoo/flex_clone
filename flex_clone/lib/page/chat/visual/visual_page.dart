@@ -54,7 +54,7 @@ class VisualPage extends StatelessWidget {
                 TakePicture(size: 117, minor: true),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             OkButton(buttonText: '계속')
           ],
         ),

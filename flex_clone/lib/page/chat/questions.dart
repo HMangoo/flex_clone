@@ -269,7 +269,7 @@ List demeChatMessages = [
     isSender: false,
     lastQuestion: true,
     buttonMessage: '프로필 사진 등록',
-    firstButtonClickFunc: () => Get.to(() => VisualPage()),
+    firstButtonClickFunc: () => Get.to(() => const VisualPage()),
   ),
   Message(text: '프로필 사진 등록 완료', isSender: true),
   Message(text: '가입 신청이 완료되었어요!', isSender: false),

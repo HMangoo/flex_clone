@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../controller/signup_controller.dart';
 import '../utils/app_layout.dart';
 
+// ignore: must_be_immutable
 class OkButton extends GetView<SignupController> {
   OkButton({
     Key? key,

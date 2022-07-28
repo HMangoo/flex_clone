@@ -28,7 +28,7 @@ class TextMessage extends GetView<SignupController> {
             ),
             Gap(hDefaultPadding * 0.3)
           ],
-          if (message.isSender) Spacer(),
+          if (message.isSender) const Spacer(),
           Container(
               margin: EdgeInsets.only(top: vDefaultPadding * 0.5),
               constraints: BoxConstraints(maxWidth: AppLayout.getWidth(250)),

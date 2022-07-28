@@ -5,7 +5,7 @@ import 'package:permission_and_image_load/utils/app_layout.dart';
 import 'package:permission_and_image_load/utils/color.dart';
 
 class OptionContainer extends GetView<SignupController> {
-  OptionContainer({Key? key, required this.text}) : super(key: key);
+  const OptionContainer({Key? key, required this.text}) : super(key: key);
 
   final String text;
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:permission_and_image_load/utils/app_layout.dart';
 import 'package:permission_and_image_load/utils/color.dart';
 
+// ignore: must_be_immutable
 class TakePicture extends StatefulWidget {
   TakePicture({Key? key, required this.size, this.minor = false})
       : super(key: key);

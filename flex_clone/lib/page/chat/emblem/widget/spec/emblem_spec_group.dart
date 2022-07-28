@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
-import 'package:permission_and_image_load/controller/signup_controller.dart';
-import 'package:permission_and_image_load/page/chat/capacity/capacity_list.dart';
 import 'package:permission_and_image_load/page/chat/emblem/widget/emblem_pick_controller.dart';
 import 'package:permission_and_image_load/page/chat/emblem/widget/spec/emblem_spec_element.dart';
-import 'package:permission_and_image_load/page/chat/emblem/widget/tear/emblem_tear_element.dart';
 import 'package:permission_and_image_load/utils/app_layout.dart';
 
+// ignore: must_be_immutable
 class EmblemSpecGroup extends StatelessWidget {
   EmblemSpecGroup({Key? key, required this.capacity}) : super(key: key);
 

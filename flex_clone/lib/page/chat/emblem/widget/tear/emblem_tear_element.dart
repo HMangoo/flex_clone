@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:permission_and_image_load/controller/signup_controller.dart';
-import 'package:permission_and_image_load/page/chat/capacity/capacity_list.dart';
 import 'package:permission_and_image_load/page/chat/emblem/widget/emblem_pick_controller.dart';
 import 'package:permission_and_image_load/utils/app_layout.dart';
 import 'package:permission_and_image_load/utils/color.dart';
 import 'package:permission_and_image_load/utils/font_style.dart';
 import 'dart:math' as math;
 
+// ignore: must_be_immutable
 class EmblemSelectElement extends GetView<SignupController> {
   EmblemSelectElement({
     Key? key,

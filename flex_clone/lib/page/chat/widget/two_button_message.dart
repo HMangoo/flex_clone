@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:permission_and_image_load/page/chat/questions.dart';
-import 'package:permission_and_image_load/page/chat/widget/consent_button.dart';
 
 import '../../../controller/signup_controller.dart';
 import '../../../utils/app_layout.dart';
