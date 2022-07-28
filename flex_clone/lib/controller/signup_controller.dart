@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:permission_and_image_load/page/chat/widget/text_message.dart';
-
-import '../page/chat/questions.dart';
+import 'package:permission_and_image_load/page/questions.dart';
+import 'package:permission_and_image_load/page/widget/text_message.dart';
 
 class SignupController {
   RxList<Widget> bubbles = <Widget>[].obs;

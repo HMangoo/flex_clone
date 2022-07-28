@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:permission_and_image_load/controller/signup_controller.dart';
-import 'package:permission_and_image_load/loading_page.dart';
+import 'package:permission_and_image_load/page/loading_page.dart';
 
 void main() {
   runApp(const MyApp());
