@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:permission_and_image_load/page/charater_select_message.dart';
+import 'package:permission_and_image_load/page/chat/widget/charater_select_message.dart';
 import 'package:permission_and_image_load/page/chat/emblem/emblem_select_page.dart';
 import 'package:permission_and_image_load/page/chat/location/select_location_page.dart';
 import 'package:permission_and_image_load/page/chat/permission/permission_page.dart';

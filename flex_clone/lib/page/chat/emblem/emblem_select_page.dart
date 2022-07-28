@@ -8,9 +8,7 @@ import 'package:permission_and_image_load/page/chat/emblem/widget/tear/emblem_te
 import 'package:permission_and_image_load/utils/app_layout.dart';
 import 'package:permission_and_image_load/utils/color.dart';
 import 'package:permission_and_image_load/utils/font_style.dart';
-import 'package:permission_and_image_load/widget/ok_button.dart';
 import 'package:permission_and_image_load/widget/page_title_appbar.dart';
-import 'dart:math' as math;
 
 class EmblemSelectPage extends GetView<SignupController> {
   const EmblemSelectPage({Key? key}) : super(key: key);

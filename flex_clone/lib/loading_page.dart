@@ -18,7 +18,7 @@ class LoadingPage extends GetView<SignupController> {
         child: Center(
           child: InkWell(
             onTap: () {
-              Get.to(() => ChattingScreen());
+              Get.to(() => const ChattingScreen());
               controller.nextQuestion();
             },
             child: Container(
@@ -27,7 +27,7 @@ class LoadingPage extends GetView<SignupController> {
               decoration: BoxDecoration(
                   color: baseColor3,
                   borderRadius: BorderRadius.circular(AppLayout.getHeight(20))),
-              child: Center(
+              child: const Center(
                 child: Text(
                   '회원가입 시작',
                   style: pageDescription,
