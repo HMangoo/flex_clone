@@ -40,7 +40,7 @@ class TextMessage extends GetView<SignupController> {
               child: Text(
                 (!message.isUseAnswer)
                     ? message.text
-                    : '${message.text} ${controller.answerStorage.value}',
+                    : '${message.text}\n ${controller.answerStorage.value}님,',
                 style: questionStyle,
               )),
         ],

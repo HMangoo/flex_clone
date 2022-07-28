@@ -51,6 +51,8 @@ class YesOrNoMessage extends GetView<SignupController> {
                       onTap: () {
                         if (message.yesOrNoButton) {
                           controller.nextQuestion();
+                        } else if (message.buttonMessage == '비흡연') {
+                          controller.answer(message.buttonMessage);
                         } else {
                           message.firstButtonClickFunc();
                         }
@@ -84,6 +86,9 @@ class YesOrNoMessage extends GetView<SignupController> {
                         if (message.isClickFunc &&
                             controller.questionIndex.value == 18) {
                           controller.answer('능력에 자신 있어요!');
+                        }
+                        if (message.buttonMessage2 == '흡연') {
+                          controller.answer(message.buttonMessage2);
                         }
                       },
                       child: Container(

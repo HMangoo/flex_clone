@@ -7,7 +7,7 @@ import '../page/chat/questions.dart';
 class SignupController {
   RxList<Widget> bubbles = <Widget>[].obs;
 
-  List sendMessage = [1, 3, 5, 7, 9, 11, 14, 19];
+  List sendMessage = [1, 3, 5, 7, 9, 11, 14, 19, 24, 37];
 
   List wantAnswerNum = [13, 16, 18];
 
@@ -76,4 +76,15 @@ class SignupController {
 
   RxInt singleEmblemClickCount = 0.obs;
   RxInt duplicatedEmblemClickCount = 0.obs;
+
+  RxString selectedLocation = ''.obs;
+
+  RxList selectedCharactor = [].obs;
+  void select(String text) {
+    selectedCharactor.add(text);
+  }
+
+  void cancel(String text) {
+    selectedCharactor.remove(text);
+  }
 }

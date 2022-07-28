@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:permission_and_image_load/page/charater_select_message.dart';
 import 'package:permission_and_image_load/page/chat/emblem/emblem_select_page.dart';
+import 'package:permission_and_image_load/page/chat/location/select_location_page.dart';
 import 'package:permission_and_image_load/page/chat/permission/permission_page.dart';
 import 'package:permission_and_image_load/page/chat/visual/visual_page.dart';
 import 'package:permission_and_image_load/page/chat/widget/button_message.dart';
+import 'package:permission_and_image_load/page/chat/widget/multi_option_message.dart';
 import 'package:permission_and_image_load/page/chat/widget/text_message.dart';
 import 'package:permission_and_image_load/page/chat/widget/two_button_message.dart';
 
@@ -31,6 +34,13 @@ class Message {
 
   var consentText;
 
+  int numRow;
+  var row1;
+  var row2;
+  var row3;
+  var row4;
+  var row5;
+
   Message(
       {required this.text,
       required this.isSender,
@@ -42,6 +52,12 @@ class Message {
       this.secondButtonClickFunc = nullFunc,
       this.numConsentButton = 0,
       this.consentText = "",
+      this.numRow = 0,
+      this.row1 = "",
+      this.row2 = "",
+      this.row3 = "",
+      this.row4 = "",
+      this.row5 = "",
       this.yesOrNoButton = false,
       this.isMinorColor = false,
       this.isUseAnswer = false});
@@ -143,7 +159,7 @@ List demeChatMessages = [
     buttonMessage2: '서류 심사',
     yesOrNoButton: false,
     isSender: false,
-    firstButtonClickFunc: () => Get.to(() => const VisualPage()),
+    firstButtonClickFunc: () {},
     isClickFunc: true,
     lastQuestion: true,
   ),
@@ -167,7 +183,106 @@ List demeChatMessages = [
     buttonMessage: '거주지 선택하기',
     isSender: false,
     lastQuestion: true,
+    firstButtonClickFunc: () => Get.to(() => SelectLocation()),
   ),
+  Message(text: '어떤 일을 하고 계시나요?', isSender: false, lastQuestion: true),
+  Message(
+    text: '제대로 입력했는지 한 번 더 확인해주세요',
+    buttonMessage: '정확해요!',
+    buttonMessage2: '다시 입력할래요',
+    yesOrNoButton: true,
+    isSender: false,
+    lastQuestion: true,
+  ),
+  Message(text: '정확해요!', isSender: true),
+  Message(
+    text: '최종학력은 어떻게 되시나요?',
+    isSender: false,
+    lastQuestion: true,
+    numRow: 2,
+    row1: ['대학교 재학', '대학교 졸업', '고등학교'],
+    row2: ['대학원 재학', '대학교 졸업'],
+  ),
+  Message(text: '키는 몇 cm이신가요?', isSender: false, lastQuestion: true),
+  Message(
+    text: '체형이 어떻게 되시나요?',
+    isSender: false,
+    lastQuestion: true,
+    numRow: 2,
+    row1: ['마른', '슬림탄탄', '보통'],
+    row2: ['통통한', '탄탄한', '근육질'],
+  ),
+  Message(
+    text: '술 드시나요?',
+    isSender: false,
+    lastQuestion: true,
+    numRow: 2,
+    row1: ['마시지 않음', '필요할 때만', '가끔 마심'],
+    row2: ['즐기는 편', '자리만 즐김'],
+  ),
+  Message(
+    text: '흡연하시나요?',
+    buttonMessage: '비흡연',
+    buttonMessage2: '흡연',
+    isSender: false,
+    lastQuestion: true,
+  ),
+  Message(
+    text: '어떤 종교를 믿으시나요?',
+    isSender: false,
+    lastQuestion: true,
+    numRow: 2,
+    row1: ['무교', '기독교', '불교'],
+    row2: ['천주교', '기타'],
+  ),
+  Message(
+    text: '성격은 어떤 편이신가요?\n당신의 성격 3가지를 선택해주세요',
+    isSender: false,
+    lastQuestion: true,
+    numRow: 4,
+    row1: ['지적인', '차분한', '유머있는'],
+    row2: ['낙천적인', '내향적인', '외향적인'],
+    row3: ['듬직한', '상냥한', '귀여운'],
+    row4: ['열정적인', '감성적인', '개성있는'],
+    isClickFunc: true,
+  ),
+  Message(text: '이제 마지막으로 당신을 자유롭게 표현해볼 시간이에요 :)', isSender: false),
+  Message(text: '언제나 수정 가능하니, 너무 깊이 생각하지 마시고 편하게 대답해주세요!', isSender: false),
+  Message(text: '당신의 매력을 살짝 어필해주세요', isSender: false, lastQuestion: true),
+  Message(
+    text: '일상을 벗어난 휴일엔 무얼 하나요?',
+    buttonMessage: '다음에 말할래요',
+    isSender: false,
+    isMinorColor: true,
+    lastQuestion: true,
+    firstButtonClickFunc: () {},
+  ),
+  Message(text: '최근 푹 빠져있는 관심사는 무엇인가요?', isSender: false, lastQuestion: true),
+  Message(
+      text: '인연이 생긴다면 가고 싶은 여행지는 어디인가요?', isSender: false, lastQuestion: true),
+  Message(
+      text: '질문은 이제 끝났어요! 이제 딱 하나만 더 요청드릴게요',
+      isSender: false,
+      lastQuestion: false),
+  Message(
+    text: '당신의 매력적인 모습을 보여주세요',
+    isSender: false,
+    lastQuestion: true,
+    buttonMessage: '프로필 사진 등록',
+    firstButtonClickFunc: () => Get.to(() => VisualPage()),
+  ),
+  Message(text: '프로필 사진 등록 완료', isSender: true),
+  Message(text: '가입 신청이 완료되었어요!', isSender: false),
+  Message(text: '당신의 매력에 신뢰를 더하기 위해 프로필을 확인하고 있어요', isSender: false),
+  Message(text: '프로필에 만제가 없을 경우, 영업일 기준 2~3일 내 가입심사가 완료됩니다', isSender: false),
+  Message(
+    text: '가입 신청이 완료되었어요!',
+    isSender: false,
+    lastQuestion: true,
+    buttonMessage: '입장하기',
+    isClickFunc: true,
+  ),
+  Message(text: '입장', isSender: true),
 ];
 
 List<List<Widget>> question = [
@@ -233,4 +348,34 @@ List<List<Widget>> question = [
     TextMessage(message: demeChatMessages[37]),
     ButtonMessage(message: demeChatMessages[38]),
   ], // 22
+  [TextMessage(message: demeChatMessages[39])], // 23
+  [YesOrNoMessage(message: demeChatMessages[40])], // 24
+  [TextMessage(message: demeChatMessages[41])], // 25
+  [MultiOptionMessge(message: demeChatMessages[42])], // 26 최종학력
+  [TextMessage(message: demeChatMessages[43])], //
+  [MultiOptionMessge(message: demeChatMessages[44])],
+  [MultiOptionMessge(message: demeChatMessages[45])],
+  [YesOrNoMessage(message: demeChatMessages[46])], // 흡연
+  [MultiOptionMessge(message: demeChatMessages[47])],
+  [CharaterSelectMessage(message: demeChatMessages[48])], // 32 - 성격 3가지
+  [
+    TextMessage(message: demeChatMessages[49]),
+    TextMessage(message: demeChatMessages[50]),
+    TextMessage(message: demeChatMessages[51]),
+  ], // 33
+  [ButtonMessage(message: demeChatMessages[52])], // 34
+  [TextMessage(message: demeChatMessages[53])], //35
+  [TextMessage(message: demeChatMessages[54])], // 36
+  [
+    TextMessage(message: demeChatMessages[55]),
+    ButtonMessage(message: demeChatMessages[56])
+  ], // 37 프로필이다.
+  [TextMessage(message: demeChatMessages[57])], // 38
+  [
+    TextMessage(message: demeChatMessages[58]),
+    TextMessage(message: demeChatMessages[59]),
+    TextMessage(message: demeChatMessages[60]),
+    ButtonMessage(message: demeChatMessages[61])
+  ],
+  [TextMessage(message: demeChatMessages[62])],
 ];

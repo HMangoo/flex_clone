@@ -90,6 +90,25 @@ class AnswerField extends GetView<SignupController> {
                   controller.answer(textFormController.userEnterMessage.value);
                 }
               }
+              // 어떤일을 하시나요 부터 하면됨!!!!!!!!!!!!!!!!!!!!!!!
+              if (controller.questionIndex.value == 23) {
+                controller.answer(textFormController.userEnterMessage.value);
+              }
+              if (controller.questionIndex.value == 27) {
+                controller.answer(textFormController.userEnterMessage.value);
+              }
+              if (controller.questionIndex.value == 33) {
+                controller.answer(textFormController.userEnterMessage.value);
+              }
+              if (controller.questionIndex.value == 34) {
+                controller.answer(textFormController.userEnterMessage.value);
+              }
+              if (controller.questionIndex.value == 35) {
+                controller.answer(textFormController.userEnterMessage.value);
+              }
+              if (controller.questionIndex.value == 36) {
+                controller.answer(textFormController.userEnterMessage.value);
+              }
             },
             icon: Obx(
               () => Icon(
